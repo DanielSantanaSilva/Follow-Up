@@ -1,11 +1,15 @@
-import criaUsuario from "../../src/casos-de-uso/cria-usuario.js";
+import CriaUsuarioCasoDeUso from "../../src/casos-de-uso/cria-usuario.js";
+import ContaRepository from "../../src/repository/conta.repository.js";
 
 function testarCriarUsuario() {
-  criaUsuario("Matheus", "matheus@email.com", "12367234");
-  criaUsuario("Gabriel", "gabriel@email.com", "92827243");
-  criaUsuario("Rafael", "rafael@email.com", "62718925");
-  criaUsuario("Gabriel", "gabriel@email.com", "92827243");
-  criaUsuario("", "", "62718925");
+  const repository = new ContaRepository();
+  const casoDeUso = new CriaUsuarioCasoDeUso(repository);
+
+  casoDeUso.executa("Matheus", "matheus@email.com", "12367234");
+  casoDeUso.executa("Gabriel", "gabriel@email.com", "92827243");
+  casoDeUso.executa("Rafael", "rafael@email.com", "62718925");
+  casoDeUso.executa("Gabriel", "gabriel@email.com", "92827243");
+  casoDeUso.executa("", "", "62718925");
 }
 
 testarCriarUsuario();

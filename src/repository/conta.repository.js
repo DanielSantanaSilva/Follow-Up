@@ -1,18 +1,23 @@
 import fs from "fs";
+export default class ContaRepository {
+  constructor(caminhoArquivo = "./dados/contas.json") {
+    this.caminhoArquivo = caminhoArquivo;
+  }
 
-export function salva(conta) {
-  const listaSalva = lista();
-  listaSalva.push(conta);
+  salva(conta) {
+    const listaSalva = lista();
+    listaSalva.push(conta);
 
-  const data = JSON.stringify(listaSalva);
-  fs.writeFileSync("./dados/contas.json", data);
-  return conta;
-}
+    const data = JSON.stringify(listaSalva);
+    fs.writeFileSync(this.caminhoArquivo, data);
+    return conta;
+  }
 
-export function lista() {
-  try {
-    return JSON.parse(fs.readFileSync("./dados/contas.json"));
-  } catch (error) {
-    return [];
+  lista() {
+    try {
+      return JSON.parse(fs.readFileSync(this.caminhoArquivo));
+    } catch (error) {
+      return [];
+    }
   }
 }
