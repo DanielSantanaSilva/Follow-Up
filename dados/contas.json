@@ -1,7 +1,1 @@
-{
-  "id": "8a3565bb-054d-44cc-9bfb-22b821531ff7",
-  "nome": "daniel",
-  "email": "daniel@email.com",
-  "senha": "12345678",
-  "dataCriacao": "2022-10-21"
-}
+[{"id":"c5624f59-605e-4d6c-a12d-6b63ada9657e","nome":"Matheus","email":"matheus@email.com","senha":"12367234","dataCriacao":"2022-10-27"},{"id":"4c83396d-cc11-42ca-b287-7d8b3f0d2fa9","nome":"Gabriel","email":"gabriel@email.com","senha":"92827243","dataCriacao":"2022-10-27"},{"id":"b3ae2ced-1a36-489f-aff9-a2981caebfb2","nome":"Rafael","email":"rafael@email.com","senha":"62718925","dataCriacao":"2022-10-27"},{"id":"8a3565bb-054d-44cc-9bfb-22b821531ff7","nome":"daniel","email":"daniel@email.com","senha":"12345678","dataCriacao":"2022-10-21"}]

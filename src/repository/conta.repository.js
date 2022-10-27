@@ -5,7 +5,7 @@ export default class ContaRepository {
   }
 
   salva(conta) {
-    const listaSalva = lista();
+    const listaSalva = this.lista();
     listaSalva.push(conta);
 
     const data = JSON.stringify(listaSalva);

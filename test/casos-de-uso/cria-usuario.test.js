@@ -10,6 +10,7 @@ function testarCriarUsuario() {
   casoDeUso.executa("Rafael", "rafael@email.com", "62718925");
   casoDeUso.executa("Gabriel", "gabriel@email.com", "92827243");
   casoDeUso.executa("", "", "62718925");
+  console.log(repository.lista())
 }
 
 testarCriarUsuario();

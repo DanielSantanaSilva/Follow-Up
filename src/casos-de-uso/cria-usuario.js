@@ -1,3 +1,4 @@
+import EntidadeConta from "../entidades/conta.entity.js";
 import CriarValidacao from "../validadores/cria-validacao.js";
 
 export default class CriaUsuarioCasoDeUso {
