@@ -1,26 +1,18 @@
-import { randomUUID } from "crypto";
-import criaContaValidador from "../validadores/cria-conta.validator.js";
+import EntidadeConta from "../entidades/conta.entity.js";
+import CriarValidacao from "../validadores/cria-validacao.js";
 
-export default function criaUsuario(nome, email, senha) {
-  const validation = criaContaValidador(nome, email, senha);
-  if (validation.temErros) {
-    validation.erros.forEach((erro) => console.log(erro.mensagem));
-    return;
+export default class CriaUsuarioCasoDeUso {
+  constructor(contaRepository) {
+    this.contaRepository = contaRepository;
+    this.criaContaValidador = new CriarValidacao(this.contaRepository);
   }
+  executa(nome, email, senha) {
+    const validation = this.criaContaValidador.executa(nome, email, senha);
+    if (validation.temErros) {
+      return validation.erros.map((erro) => erro.mensagem);
+    }
 
-  const novoUsuario = {
-    id: "",
-    nome: "",
-    email: "",
-    senha: "",
-    dataCriacao: "",
-  };
-
-  novoUsuario.id = randomUUID();
-  novoUsuario.nome = nome;
-  novoUsuario.email = email;
-  novoUsuario.senha = senha;
-  novoUsuario.dataCriacao = new Date().toISOString().split("T")[0];
-
-  return novoUsuario;
+    const novoUsuario = new EntidadeConta(nome, email, senha);
+    return this.contaRepository.salva(novoUsuario);
+  }
 }
