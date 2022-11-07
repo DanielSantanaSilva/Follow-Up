@@ -1,0 +1,14 @@
+{
+  "_id": {
+    "$oid": "6363d2dd7fafc0ed7968b224"
+  },
+  "texto": "Primeira postagem",
+  "autor_id": {
+    "$oid": "636431d17fafc0ed7968f02d"
+  },
+  "dataCriacao": {
+    "$date": {
+      "$numberLong": "1667088000000"
+    }
+  }
+}
