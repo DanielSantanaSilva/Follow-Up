@@ -1,1 +1,1 @@
-# follow-up
+FollowUp é um protótipo de uma rede social baseada no Twitter. Esta aplicação foi desenvolvida em um bootcamp de aceleração de carreira promovida pela Alura para Empresas para profissionais da empresa Lina Infratech.
