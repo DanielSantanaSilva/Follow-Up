@@ -24,6 +24,10 @@ export class UserRepository {
     await this.#usersCollection.deleteOne({ id });
   }
 
+  async updateOne(id) {
+    await this.#usersCollection.updateOne({ id });
+  }
+
   async listAll() {
     const users = await this.#usersCollection.find().toArray();
     return users.map(this.#mapToEntity);
