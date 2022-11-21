@@ -1,6 +1,5 @@
 import "dotenv/config";
 import { UserEntity } from "../entities/user.entity.js";
-
 export class UserRepository {
   #usersCollection;
 
@@ -12,22 +11,35 @@ export class UserRepository {
     await this.#usersCollection.insertOne({ ...user });
   }
 
-  async delete(id) {
-    await this.#usersCollection.deleteOne({ _id: id });
+  async findById(id) {
+    const possibleUser = await this.#usersCollection.findOne({ id });
+
+    if (!possibleUser) {
+      return null;
+    }
+    return this.#mapToEntity(possibleUser);
+  }
+
+  async deleteOne(id) {
+    await this.#usersCollection.deleteOne({ id });
+  }
+
+  async updateOne(id) {
+    await this.#usersCollection.updateOne({ id });
   }
 
   async listAll() {
     const users = await this.#usersCollection.find().toArray();
+    return users.map(this.#mapToEntity);
+  }
 
-    return users.map(
-      (userData) =>
-        new UserEntity(
-          userData.id,
-          userData.name,
-          userData.email,
-          userData.password,
-          userData.createdDate
-        )
+  #mapToEntity(userData) {
+    return new UserEntity(
+      userData.id,
+      userData.name,
+      userData.email,
+      userData.password,
+      userData.createdDate
     );
   }
 }

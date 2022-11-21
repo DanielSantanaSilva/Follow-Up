@@ -3,24 +3,33 @@ import { DBConnection } from "../infra/db-connection.js";
 import { UserRepository } from "../repositories/user.repository.js";
 import { CreateUserRequest } from "../http/create-user.request.js";
 import { DeleteUserRequest } from "../http/delete-user.request.js";
+// import { ListUsersRequest } from "../http/list-users.request.js";
+// import { GetUserRequest } from "../http/get-user.request.js";
+// import { UpdateUserRequest } from "../http/update-user.request.js";
 
 const usersRoutes = new Router();
 
-const connection = await DBConnection.getInstance(
-  process.env.DB_CONNECTION_STRING,
-  process.env.DB_NAME
-);
-
+const connection = await DBConnection.getInstance();
 const userRepository = new UserRepository(connection);
 
-const createUserRequest = new CreateUserRequest(userRepository);
-const deleteUserRequest = new DeleteUserRequest(userRepository);
+// usersRoutes.get("/account", (req, res) =>
+//   new ListUsersRequest(userRepository).execute(req, res)
+// );
 
+// usersRoutes.get("/account/:id", (req, res) =>
+//   new GetUserRequest(userRepository).execute(req, res)
+// );
 
-usersRoutes.post("/account", createUserRequest.execute.bind(createUserRequest));
-usersRoutes.delete("/account/:id",deleteUserRequest.execute.bind(deleteUserRequest));
-// usersRoutes.get("/account", new ListUsersRequest(userRepository).execute);
-// usersRoutes.get("/account/:id", new GetUserRequest(userRepository).execute);
-// usersRoutes.put("/account/:id", new UpdateUserRequest(userRepository).execute);
+usersRoutes.post("/account", (req, resp) =>
+  new CreateUserRequest(userRepository).execute(req, resp)
+);
+
+usersRoutes.delete("/account/:id", (req, resp) =>
+  new DeleteUserRequest(userRepository).execute(req, resp)
+);
+
+// usersRoutes.put("/account/:id", (req, res) =>
+//   new UpdateUserRequest(userRepository).execute(req, res)
+// );
 
 export { usersRoutes };
