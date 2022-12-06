@@ -8,6 +8,6 @@ export const errorMiddleware = (error, request, response, next) => {
       details: error.details,
     });
   }
-
+  console.log(error);
   return response.status(500).json({ message: "Server Internal Error" });
 };

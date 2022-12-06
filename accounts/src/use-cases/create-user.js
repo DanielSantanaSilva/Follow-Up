@@ -2,7 +2,6 @@ import { randomUUID } from "node:crypto";
 import { DateTime } from "../utils/date.utils.js";
 import { CreateUserValidator } from "../validators/create-user.validator.js";
 import { UserEntity } from "../entities/user.entity.js";
-import { BadRequestError } from "../errors/bad-request.error.js";
 import { PasswordUtil } from "../utils/password.utils.js";
 
 export class CreateUserUseCase {

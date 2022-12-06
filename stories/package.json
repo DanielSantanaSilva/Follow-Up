@@ -1,0 +1,21 @@
+{
+  "name": "stories",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^16.0.3",
+    "mysql2": "^2.3.3",
+    "sequelize": "^6.26.0"
+  },
+  "devDependencies": {
+    "jest": "^29.3.1",
+    "sequelize-cli": "^5.5.1"
+  }
+}

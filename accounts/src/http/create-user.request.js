@@ -1,4 +1,4 @@
-import { BadRequestError } from "../errors/bad-request.error.js";
+import { HttpError } from "../errors/http-request.error.js";
 import { CreateUserUseCase } from "../use-cases/create-user.js";
 
 export class CreateUserRequest {
@@ -18,8 +18,8 @@ export class CreateUserRequest {
       name,
     });
 
-    if (errors.length != null) {
-      throw new BadRequestError("Bad Request", errors);
+    if (errors?.length != null) {
+      throw new HttpError("Bad Request", 400, errors);
     }
 
     const createdUser = await createUserUseCase.execute({
