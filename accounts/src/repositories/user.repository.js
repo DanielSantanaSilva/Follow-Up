@@ -1,4 +1,4 @@
-import "dotenv/config";
+import "dotenv/config.js";
 import { UserEntity } from "../entities/user.entity.js";
 export class UserRepository {
   #usersCollection;
