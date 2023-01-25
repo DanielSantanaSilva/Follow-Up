@@ -1,9 +1,12 @@
 {
   "compilerOptions": {
+    "experimentalDecorators": true,
     "outDir": "dist/js",
     "target": "ES6",
     "noEmitOnError": true,
-    "noImplicitAny": true
+    "noImplicitAny": true,
+    "experimentalDecorators": true,
+    "module": "Node16"
   },
   "include": ["src/**/*"]
 }
